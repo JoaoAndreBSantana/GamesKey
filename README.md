@@ -1,6 +1,6 @@
-# GameKey
+# GamesKey
 
-**GameKey** é um sistema de vendas de chaves de jogos digitais, inspirado em plataformas como **Eneba** e **Nuvem**. 
+**GamesKey** é um sistema de vendas de chaves de jogos digitais, inspirado em plataformas como **Eneba** e **Nuvem**. 
 ---
 
 ## Tecnologias Utilizadas
