@@ -34,14 +34,4 @@
 | `biblioteca_usuario` | `id`, `id_usuario`, `id_jogo`, `data_resgate`                          |
 
 
----
-
-##Requisitos
-
-- PHP 7.x ou superior
-- Composer
-- WAMP (ou ambiente equivalente)
-- MySQL
-- Navegador web atualizado
-
 
