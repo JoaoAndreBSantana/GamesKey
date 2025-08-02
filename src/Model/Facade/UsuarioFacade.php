@@ -12,20 +12,20 @@ class UsuarioFacade
         $this->usuarioRepository = $usuarioRepository;
     }
 
-    public function autenticarUsuario(string $email, string $senha): ?object//irei chamar o método autenticarUsuario no controlador
+    public function autenticarUsuario(string $email, string $senha): ?object
     {
         
         $usuario = $this->usuarioRepository->buscarPoremail($email);
 
         if (!$usuario) {
-            return null; // usuário não encontrado
+            return null; 
         }
 
-        //verifica se a senha  bate com a senha hash armazenada
+       
         if (password_verify($senha, $usuario->getSenha())) {
-            return $usuario; // autenticado com sucesso
+            return $usuario;
         }
 
-        return null; // senha inválida
+        return null; 
     }
 }
