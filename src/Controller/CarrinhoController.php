@@ -86,10 +86,7 @@ class CarrinhoController
         $jogoId = (int) ($_POST['id_jogo'] ?? 0);
         $preco = (float) ($_POST['preco_jogo'] ?? 0.0);
 
-        // DEBUG 
-//die("ID: $jogoId, Preço: $preco, Usuário ID: " . $_SESSION['usuario_id']);//
-
-        //  usuário auxiliar e temporario apenas com id
+      
         $usuario = new Usuario();
         $usuario->setId($_SESSION['usuario_id']);
 
@@ -105,16 +102,16 @@ class CarrinhoController
 {
     global $entityManager; 
 
-    // Verifica se o usuário está autenticado
+   
     if (!isset($_SESSION['usuario_id'])) {
         header('Location: index.php?rota=FormLogarConta');
         exit;
     }
 
-    //pego o id do jogo a ser removido
+    
     $itemId = (int) ($_POST['item_id'] ?? 0);
 
-    // verifico se existe
+   
     $item = $entityManager->find(ItemCarrinho::class, $itemId);
 
     if ($item) {
@@ -139,16 +136,6 @@ public function FinalizarCompra()
         header('Location: index.php?rota=FormLogarConta');
         exit;
     }
-   
-   // Debugzin
-   /* $itens = $this->carrinhoFacade->acharItensCarrinho($_SESSION['usuario_id']);
-    
-    die(json_encode([
-        'usuario_id' => $_SESSION['usuario_id'],
-        'itens_carrinho' => $itens,
-        'total' => array_reduce($itens, 
-            fn($total, $item) => $total + $item['preco'], 0)
-    ], JSON_PRETTY_PRINT));*/
 
         $this->carrinhoFacade->finalizarCompra($_SESSION['usuario_id']);
 
@@ -228,7 +215,6 @@ public function FormResgatarChave()
     ]);
 
 
-    // 2. Inclui a view para resgatar chave
     include __DIR__ . '/../View/resgatar_chave.php';
 
 }
