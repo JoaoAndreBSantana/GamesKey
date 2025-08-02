@@ -10,7 +10,7 @@ class CategoriaFacade
     private $categoriaRepository;
     
 
-    public function __construct(CategoriaRepository $categoriaRepository)//construtor que recebe a instancia 
+    public function __construct(CategoriaRepository $categoriaRepository)
     {
         $this->categoriaRepository = $categoriaRepository;
     }
