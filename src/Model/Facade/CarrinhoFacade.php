@@ -52,7 +52,6 @@ class CarrinhoFacade
         $carrinho = $this->carrinhoRepository->buscarCarrinhoAtivo($usuario) 
             ?? $this->carrinhoRepository->criarCarrinho($usuario);
 
-        //obtenho a referencia com esse get
         $jogo = $this->jogoRepository
             ->getEntityManager()
             ->getReference(Jogo::class, $jogoId);
@@ -69,7 +68,7 @@ public function removerItem(int $itemId, Carrinho $carrinho): void
     $item = $this->itemCarrinhoRepository->find($itemId);
     
     if ($item) {
-        // removo da coleção
+  
         $carrinho->getItens()->removeElement($item);
         
        
@@ -80,7 +79,7 @@ public function removerItem(int $itemId, Carrinho $carrinho): void
     }
 }
 
-public function acharItensCarrinho(int $usuarioId): array//chama a query
+public function acharItensCarrinho(int $usuarioId): array
 {
     return $this->itemCarrinhoRepository->acharItensCarrinho($usuarioId);
 }
@@ -99,7 +98,7 @@ public function finalizarCompra(int $usuarioId): string
         return '';
     }
 
-    // calcula total
+  
     $total = 0;
     foreach ($carrinho->getItens() as $item) {
         $total += $item->getPrecoUnitario();
@@ -110,7 +109,7 @@ public function finalizarCompra(int $usuarioId): string
 
     $comprovante = $this->comprovanteRepository->criarComprovante($usuario, $total, $chave);
 
-    // adiciona itens usando o repositório
+    
     foreach ($carrinho->getItens() as $item) {
         $this->itemComprovanteRepository->adicionarItemAoComprovante(
             $comprovante,
